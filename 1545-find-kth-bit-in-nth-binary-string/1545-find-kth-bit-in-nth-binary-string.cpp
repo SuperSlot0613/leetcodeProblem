@@ -29,27 +29,27 @@ public:
     }
     char findKthBit(int n, int k) 
     {
-        string s = '0' + former(n);
+        string s = former(n);
         //cout<<s<<endl;
-        int start = 1;
-        int end = s.length();
-        while(start <= end)
-        {
-            int mid = start + (end - start)/2;
-            if(mid == k)
-            {
-                return s[mid];
-            }
-            else if(mid > k)
-            {
-                end = mid - 1;
-            }
-            else 
-            {
-                start= mid + 1;
-            }
-        }
-        return s[0];
+        // int start = 1;
+        // int end = s.length();
+        // while(start <= end)
+        // {
+        //     int mid = start + (end - start)/2;
+        //     if(mid == k)
+        //     {
+        //         return s[mid];
+        //     }
+        //     else if(mid > k)
+        //     {
+        //         end = mid - 1;
+        //     }
+        //     else 
+        //     {
+        //         start= mid + 1;
+        //     }
+        // }
+        return s[k-1];
         
     }
 };
