@@ -1,45 +1,8 @@
 class Solution {
 public:
     
-    int unboundknapsackBU(int N,std::vector<int> val){
-        int n=val.size();
-        vector<int> prev(N+1,0),curr(N+1,0);
-        for(int i=0;i<=N;i++){
-            prev[i]=(N)*val[i];
-        }
-
-        for(int ind=1;ind<n;ind++){
-            for(int t=0;t<=N;t++){
-                int notTake=prev[t];
-                int take=INT_MIN;
-                int rodlength=ind+1;
-                if(rodlength<=t){
-                    take=val[ind]+curr[t-rodlength];
-                }
-                curr[t]=min(notTake,take);
-            }
-            prev=curr;
-        }
-        return prev[N];
-
-    }
     
-    int rodcutting(int ind,int N,vector<int> val,vector<vector<int>>& dp){
-        if(ind==0){
-            return (N)*val[0];
-        }
-        if(dp[ind][N]!=-1) return dp[ind][N];
-        int notTake=rodcutting(ind-1,N,val,dp);
-        int take=INT_MAX;
-        int rodlength=ind+1;
-        if(rodlength<=N){
-            take=val[ind]+rodcutting(ind,N-rodlength,val,dp);
-        }
-        dp[ind][N]=min(notTake,take);
-        return dp[ind][N];
-    }
-    
-     int f(int n, int c,vector<int>& cuts,int i,int j, vector<vector< int>>&dp)
+    int f(int n, int c,vector<int>& cuts,int i,int j, vector<vector< int>>&dp)
     {
         if(i>j)
             return 0;
