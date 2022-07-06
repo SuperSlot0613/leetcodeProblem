@@ -1,7 +1,6 @@
 class Solution {
 public:
-    
-    int fibTOP(int n,vector<int> &dp){
+     int fibTOP(int n,vector<int> &dp){
         if(n==0 or n==1){
             return n;
         }
