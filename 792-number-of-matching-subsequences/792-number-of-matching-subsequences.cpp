@@ -1,7 +1,6 @@
-
 class Solution {
 public:
-    bool isSubsequence(string s,string x){
+     bool isSubsequence(string s,string x){
         int j=0;
         for(int i=0;i<s.size() && j<x.size();i++){
             if(s[i]==x[j]){
