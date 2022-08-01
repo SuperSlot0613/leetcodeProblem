@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int totalpath=0;
+      int totalpath=0;
     
     bool IsSafe(int i,int j,int row,int col,vector<vector<int>>& visited)
 	{
