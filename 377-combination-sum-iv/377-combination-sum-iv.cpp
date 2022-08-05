@@ -1,6 +1,6 @@
 class Solution {
 public:
-   int solve(vector<int> &nums,int &n, int tar,vector<int> &dp){
+     int solve(vector<int> &nums,int &n, int tar,vector<int> &dp){
         if(tar == 0) return 1;
         if(dp[tar]!=-1) return dp[tar];
         int count=0;
