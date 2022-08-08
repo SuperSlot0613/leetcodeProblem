@@ -1,7 +1,6 @@
 class Solution {
 public:
-    
-    int lengthofLisTd(int ind,int prev,vector<int>& arr,vector<vector<int>>& dp){
+      int lengthofLisTd(int ind,int prev,vector<int>& arr,vector<vector<int>>& dp){
         if(ind==arr.size()){
             return 0;
         }
