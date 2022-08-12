@@ -2,16 +2,16 @@ struct Node{
     Node* links[26];
     bool flag=false;
     
-    bool containkeys(char ch){
+    bool containkey(char ch){
         return (links[ch-'a']!=NULL);
-    }
-    
-    Node* get(char ch){
-        return links[ch-'a'];
     }
     
     void put(char ch,Node* node){
         links[ch-'a']=node;
+    }
+    
+    Node* getnode(char ch){
+        return links[ch-'a'];
     }
     
     void setEnd(){
@@ -21,33 +21,32 @@ struct Node{
     bool isEnd(){
         return flag;
     }
+    
 };
 
 class Trie{
-    private:Node* root;
-    public:
+  private: Node* root;
+  public:
     Trie(){
         root=new Node();
     }
-    public:
-    void Insert(string words){
+    
+    void insert(string word){
         Node* node=root;
-        for(int i=0;i<words.size();i++){
-            if(!node->containkeys(words[i])){
-                node->put(words[i],new Node());
+        for(int i=0;i<word.size();i++){
+            if(!node->containkey(word[i])){
+                node->put(word[i],new Node());
             }
-            node=node->get(words[i]);
+            node=node->getnode(word[i]);
         }
         node->setEnd();
     }
     
-    public:
-    bool checkIfPrefixExists(string word){
-        bool fl=true;
+    bool checkPrefix(string word){
         Node* node=root;
         for(int i=0;i<word.size();i++){
-            if(node->containkeys(word[i])){
-                node=node->get(word[i]);
+            if(node->containkey(word[i])){
+                node=node->getnode(word[i]);
                 if(node->isEnd()==false){
                     return false;
                 }
@@ -60,17 +59,18 @@ class Trie{
     
 };
 
+
 class Solution {
 public:
     string longestWord(vector<string>& words) {
         Trie trie;
         for(auto &it:words){
-            trie.Insert(it);
+            trie.insert(it);
         }
         
         string longest="";
         for(auto &it:words){
-            if(trie.checkIfPrefixExists(it)){
+            if(trie.checkPrefix(it)){
                 if(it.size()>longest.size()){
                     longest=it;
                 }else if(it.size()==longest.size() && it<longest){
@@ -78,7 +78,6 @@ public:
                 }
             }
         }
-        
         if(longest=="") return "";
         return longest;
     }
