@@ -1,7 +1,6 @@
 class Solution {
 public:
-    
-      bool powerTo(int index,int n){
+    bool powerTo(int index,int n){
         if(n==pow(4,index)){
             return true;
         }
