@@ -1,26 +1,26 @@
 class Solution {
 public:
     
-    void findNumbers(vector<int>& arr,vector<vector<int>>& res,int sum,int i,vector<int>& r){
-        if(sum==0){
-            res.push_back(r);
+    void getCombination(vector<vector<int>>&ans,vector<int>&res,
+                        vector<int> arr,int i, int target){
+        if(target==0){
+            ans.push_back(res);
             return;
         }
-        
-        while(i<arr.size() && (sum-arr[i])>=0){
-            r.push_back(arr[i]);
-            findNumbers(arr,res,sum-arr[i],i,r);
+        while(i<arr.size() && (target-arr[i])>=0){
+            res.push_back(arr[i]);
+            getCombination(ans,res,arr,i,target-arr[i]);
             i++;
-            r.pop_back();
+            res.pop_back();
         }
     }
     
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        sort(candidates.begin(),candidates.end());
-        //candidates.erase(unique(candidates.begin(),candidates.end()),candidates.end());
-        vector<int> r;
-        vector<vector<int>> res;
-        findNumbers(candidates,res,target,0,r);
-        return res;
+    
+    vector<vector<int>> combinationSum(vector<int>& arr, int target) {
+        sort(arr.begin(),arr.end());
+        vector<int> res;
+        vector<vector<int>> ans;
+        getCombination(ans,res,arr,0,target);
+        return ans;
     }
 };
