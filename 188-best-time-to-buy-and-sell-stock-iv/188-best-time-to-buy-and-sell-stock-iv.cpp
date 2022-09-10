@@ -1,7 +1,6 @@
 class Solution {
 public:
-    
-    int maxProfitTD(int ind,int buy,vector<int>& price,vector<vector<vector<int>>>&dp,int cap){
+     int maxProfitTD(int ind,int buy,vector<int>& price,vector<vector<vector<int>>>&dp,int cap){
         if(cap==0) return 0;
         if(ind==price.size()){
             return 0;
