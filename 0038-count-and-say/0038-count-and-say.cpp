@@ -10,8 +10,7 @@ public:
                 count++;
             }else{
                 // cout<<count<<" "<<prev<<endl;
-                ans=ans+to_string(count);
-                ans+=prev;
+                ans=ans+to_string(count)+prev;
                 prev=str[i];
                 count=1;
             }
